@@ -1,0 +1,22 @@
+{
+   "name": "review-t21-2-noite",
+   "version": "1.0.0",
+   "description": "API de Restaurantes\r Criar, ler os Restaurantes, ler um restaurante específico, atualizar, excluir\r Buscar um restaurante pelo nome\r Filtrar os restaurantes categorias",
+   "main": "index.js",
+   "scripts": {
+      "start": "node dist/server.js",
+      "build": "npx tsc --init",
+      "dev": "tsnd src/server.ts"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "express": "^4.19.2"
+   },
+   "devDependencies": {
+      "@types/express": "^4.17.21",
+      "ts-node-dev": "^2.0.0",
+      "typescript": "^5.4.5"
+   }
+}
