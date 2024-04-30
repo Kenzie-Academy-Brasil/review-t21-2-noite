@@ -1,6 +1,6 @@
 import { generateId, restaurantDatabase } from "../database/database";
 import {
-   IRestaurant,
+   TRestaurant,
    TRestaurantCreateData,
    TRestaurantUpdateData,
 } from "../interfaces/restaurant.interface";
@@ -9,7 +9,7 @@ export class RestaurantService {
    create(data: TRestaurantCreateData) {
       const now = new Date();
 
-      const restaurant: IRestaurant = {
+      const restaurant: TRestaurant = {
          id: generateId(),
          ...data,
          createdAt: now,
@@ -45,11 +45,11 @@ export class RestaurantService {
    update(id: number, data: TRestaurantUpdateData) {
       const currentRestaurant = restaurantDatabase.find(
          (restaurant) => restaurant.id === id
-      ) as IRestaurant;
+      ) as TRestaurant;
 
       const now = new Date();
 
-      const updatedRestaurant: IRestaurant = {
+      const updatedRestaurant: TRestaurant = {
          ...currentRestaurant,
          ...data,
          updatedAt: now,

@@ -1,8 +1,11 @@
 import { Router } from "express";
 import { RestaurantController } from "../controllers/restaurant.controller";
 import { IsRestaurantIdValid } from "../middleware/isRestaurantIdValid.middleware";
-import { IsCreateRestaurantBodyValid } from "../middleware/isCreateRestaurantBodyValid.middleware";
-import { IsUpdateRestaurantBodyValid } from "../middleware/isUpdateRestaurantBodyValid.middleware";
+import { ValidateBody } from "../middleware/validateBody.middleware";
+import {
+   createRestaurantSchema,
+   updateRestaurantSchema,
+} from "../schemas/restaurant.schema";
 
 export const restaurantRouter = Router();
 
@@ -10,7 +13,7 @@ const restaurantController = new RestaurantController();
 
 restaurantRouter.post(
    "/",
-   IsCreateRestaurantBodyValid.execute,
+   ValidateBody.execute(createRestaurantSchema),
    restaurantController.create
 );
 restaurantRouter.get("/", restaurantController.getMany);
@@ -18,7 +21,7 @@ restaurantRouter.get("/:id", IsRestaurantIdValid.execute, restaurantController.g
 restaurantRouter.patch(
    "/:id",
    IsRestaurantIdValid.execute,
-   IsUpdateRestaurantBodyValid.execute,
+   ValidateBody.execute(updateRestaurantSchema),
    restaurantController.update
 );
 restaurantRouter.delete("/:id", IsRestaurantIdValid.execute, restaurantController.remove);

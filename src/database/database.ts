@@ -1,6 +1,6 @@
-import { IRestaurant } from "../interfaces/restaurant.interface";
+import { TRestaurant } from "../interfaces/restaurant.interface";
 
-export const restaurantDatabase: IRestaurant[] = [];
+export const restaurantDatabase: TRestaurant[] = [];
 
 let id = 0;
 

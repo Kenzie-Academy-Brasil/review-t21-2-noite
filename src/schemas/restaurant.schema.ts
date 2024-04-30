@@ -1,15 +1,16 @@
 import { z } from "zod";
 
-/*
-{
-  "name": "Sushi da Alex",
-  "category": "Sushi"
-}
-*/
+export const restaurantSchema = z.object({
+  id: z.number().positive(),
+  name: z.string().min(1),
+  category: z.string().min(1),
+  createdAt: z.date(),
+  updatedAt: z.date()
+});
 
-export const createRestaurantSchema = z.object({
-    name: z.string().min(1),
-    category: z.string().min(1)
+export const createRestaurantSchema = restaurantSchema.pick({
+  name: true,
+  category: true
 });
 
 export const updateRestaurantSchema = createRestaurantSchema.partial();
